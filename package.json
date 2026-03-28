@@ -1,0 +1,42 @@
+{
+  "name": "@knyazevai/mcp-catalog",
+  "version": "0.1.0",
+  "description": "MCP server for searching and discovering 24,500+ MCP servers and AI agents. Semantic search, trust scores, vulnerability tracking.",
+  "bin": {
+    "mcp-catalog": "./bin/mcp-catalog.mjs"
+  },
+  "type": "module",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "agent-discovery",
+    "mcp-server",
+    "mcp-client",
+    "mcp-directory",
+    "claude",
+    "cursor",
+    "cline",
+    "semantic-search",
+    "trust-score"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knyazev741/mcp-catalog"
+  },
+  "homepage": "https://knyazevai.work",
+  "author": "knyazevai",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ]
+}
