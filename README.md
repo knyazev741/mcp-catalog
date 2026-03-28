@@ -1,8 +1,8 @@
 # KnyazevAI MCP Catalog
 
-> Search and discover 24,500+ MCP servers and AI agents from your AI assistant.
+MCP server that connects your AI assistant to the [KnyazevAI](https://knyazevai.work) search engine — the largest unified index of MCP servers and AI agents (24,500+ entries across 8 registries).
 
-KnyazevAI MCP Catalog is an [MCP server](https://modelcontextprotocol.io) that gives AI assistants the ability to search, compare, and evaluate MCP servers across the entire ecosystem. Powered by [knyazevai.work](https://knyazevai.work) — the largest unified MCP catalog with semantic search and trust scores.
+Your assistant gets tools to **search**, **browse**, **filter**, and **inspect** MCP servers. It returns structured data (JSON with names, descriptions, trust scores, install commands, GitHub stars, licenses, vulnerabilities) — the assistant then presents results however it wants.
 
 ## Quick Start
 
@@ -12,8 +12,6 @@ npx -y @knyazevai/mcp-catalog
 
 ## Configure in Claude Desktop
 
-Add to your `claude_desktop_config.json`:
-
 ```json
 {
   "mcpServers": {
@@ -25,10 +23,10 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
-## Configure in Cursor
+<details>
+<summary>Cursor / Windsurf / VS Code</summary>
 
-Add to `.cursor/mcp.json`:
-
+**Cursor** — `.cursor/mcp.json`:
 ```json
 {
   "mcpServers": {
@@ -40,10 +38,7 @@ Add to `.cursor/mcp.json`:
 }
 ```
 
-## Configure in Windsurf
-
-Add to `~/.codeium/windsurf/mcp_config.json`:
-
+**Windsurf** — `~/.codeium/windsurf/mcp_config.json`:
 ```json
 {
   "mcpServers": {
@@ -55,10 +50,7 @@ Add to `~/.codeium/windsurf/mcp_config.json`:
 }
 ```
 
-## Configure in VS Code
-
-Add to `.vscode/mcp.json`:
-
+**VS Code** — `.vscode/mcp.json`:
 ```json
 {
   "servers": {
@@ -69,49 +61,66 @@ Add to `.vscode/mcp.json`:
   }
 }
 ```
+</details>
 
-## Available Tools
+## Tools
 
-| Tool | Description |
-|------|-------------|
-| `search_servers` | Semantic search across 24,500+ servers by task description |
-| `list_servers` | Browse and filter servers by category, sort by trust/stars/downloads |
-| `get_server` | Full details: tools, trust breakdown, install commands, compatibility |
-| `get_server_vulnerabilities` | CVE/GHSA vulnerability data for server dependencies |
-| `discover` | AI-powered recommendations for your specific task |
-| `get_catalog_stats` | Aggregate ecosystem statistics |
+| Tool | What it does | Returns |
+|------|-------------|---------|
+| `search_servers` | Semantic search by task description | Ranked list of servers with scores, stars, install commands |
+| `list_servers` | Browse with filters (category, sort) | Paginated server list |
+| `get_server` | Get full details by server UUID | Tools list, trust breakdown, framework compat, packages |
+| `discover` | Task-based search across MCP + A2A agents | Ranked results with similarity scores |
+| `get_server_vulnerabilities` | Check CVE/GHSA for a server | Vulnerability list with severity and affected packages |
+| `get_catalog_stats` | Catalog overview | Total counts by registry, category breakdown |
 
-## Example Prompts
+## What you get back
 
-Once configured, ask your AI assistant:
+Every search result includes:
+- **Title & description** — what the server does
+- **Trust score** (0-100) — composite of source credibility, popularity, freshness, security
+- **GitHub stars** — community adoption signal
+- **Install command** — ready to paste into your config
+- **Transport type** — stdio, SSE, or streamable-http
+- **License** — MIT, Apache-2.0, etc.
+- **Pricing** — free/paid/freemium
+- **Vulnerability count** — known CVEs in dependencies
 
-- *"Find MCP servers for managing PostgreSQL databases"*
-- *"What are the most trusted MCP servers for web scraping?"*
-- *"Compare the top email MCP servers"*
-- *"Are there any vulnerabilities in the filesystem MCP server?"*
-- *"What's the best MCP server for working with GitHub?"*
+Server details (`get_server`) additionally include:
+- Full list of MCP tools the server exposes
+- Trust score breakdown (6 dimensions)
+- Framework compatibility (Claude Desktop, Cursor, Windsurf, etc.)
+- npm/PyPI/Docker package info
+- README summary
 
-## How It Works
+## How it works
 
-This package is a lightweight MCP server that proxies requests to the [knyazevai.work](https://knyazevai.work) public API. All search, ranking, and trust scoring happens server-side. The client simply formats API responses as MCP tool results.
+This package is a thin MCP server that forwards requests to the [knyazevai.work](https://knyazevai.work) REST API. All indexing, ranking, and scoring happens on the backend. This client just calls the API and returns JSON results as MCP tool responses.
 
-**No API key required.** The public API is free to use.
+No API key required. No data collection. No internal logic.
 
-## API
+## REST API
 
-The underlying REST API is also available directly:
+You can also use the API directly without MCP:
 
-- **Search**: `GET https://knyazevai.work/api/v1/servers/search?q=your+query`
-- **Browse**: `GET https://knyazevai.work/api/v1/servers?sort_by=trust&limit=20`
-- **Details**: `GET https://knyazevai.work/api/v1/servers/{id}`
-- **Stats**: `GET https://knyazevai.work/api/v1/stats`
-- **Docs**: [knyazevai.work/llms.txt](https://knyazevai.work/llms.txt)
+```bash
+# Search
+curl "https://knyazevai.work/api/v1/servers/search?q=database&limit=5"
 
-## Links
+# Browse by trust score
+curl "https://knyazevai.work/api/v1/servers?sort_by=trust&limit=10"
 
-- **Website**: [knyazevai.work](https://knyazevai.work)
-- **API Docs**: [knyazevai.work/llms-full.txt](https://knyazevai.work/llms-full.txt)
-- **MCP Protocol**: [modelcontextprotocol.io](https://modelcontextprotocol.io)
+# Server details
+curl "https://knyazevai.work/api/v1/servers/{uuid}"
+
+# Vulnerabilities
+curl "https://knyazevai.work/api/v1/servers/{uuid}/vulnerabilities"
+
+# Stats
+curl "https://knyazevai.work/api/v1/stats"
+```
+
+Full API docs: [knyazevai.work/llms-full.txt](https://knyazevai.work/llms-full.txt)
 
 ## License
 

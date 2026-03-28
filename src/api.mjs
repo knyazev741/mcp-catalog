@@ -38,8 +38,8 @@ export async function getServerVulnerabilities(serverId) {
   return request(`/servers/${serverId}/vulnerabilities`);
 }
 
-export async function discover(query, { limit = 5, budget } = {}) {
-  return request("/discover", { q: query, limit, max_price: budget });
+export async function discover(task, { limit = 5, budget } = {}) {
+  return request("/discover", { task, limit, max_price: budget });
 }
 
 export async function getStats() {
