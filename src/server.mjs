@@ -9,7 +9,7 @@ import * as api from "./api.mjs";
 
 export function createServer() {
   const server = new McpServer({
-    name: "mcp-catalog",
+    name: "knyazevai-mcp-catalog",
     version: "0.1.0",
     description:
       "Search and discover 24,500+ MCP servers and AI agents. " +

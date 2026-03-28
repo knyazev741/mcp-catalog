@@ -1,8 +1,8 @@
-# MCP Catalog
+# KnyazevAI MCP Catalog
 
 > Search and discover 24,500+ MCP servers and AI agents from your AI assistant.
 
-MCP Catalog is an [MCP server](https://modelcontextprotocol.io) that gives AI assistants the ability to search, compare, and evaluate MCP servers across the entire ecosystem. Powered by [knyazevai.work](https://knyazevai.work) — the largest unified MCP catalog with semantic search and trust scores.
+KnyazevAI MCP Catalog is an [MCP server](https://modelcontextprotocol.io) that gives AI assistants the ability to search, compare, and evaluate MCP servers across the entire ecosystem. Powered by [knyazevai.work](https://knyazevai.work) — the largest unified MCP catalog with semantic search and trust scores.
 
 ## Quick Start
 
