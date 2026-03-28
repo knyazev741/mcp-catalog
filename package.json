@@ -1,5 +1,5 @@
 {
-  "name": "@knyazevai/mcp-catalog",
+  "name": "knyazevai-mcp-catalog",
   "version": "0.1.0",
   "description": "MCP server for searching and discovering 24,500+ MCP servers and AI agents. Semantic search, trust scores, vulnerability tracking.",
   "bin": {

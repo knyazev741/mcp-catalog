@@ -7,7 +7,7 @@ Your assistant gets tools to **search**, **browse**, **filter**, and **inspect**
 ## Quick Start
 
 ```bash
-npx -y @knyazevai/mcp-catalog
+npx -y knyazevai-mcp-catalog
 ```
 
 ## Configure in Claude Desktop
@@ -17,7 +17,7 @@ npx -y @knyazevai/mcp-catalog
   "mcpServers": {
     "mcp-catalog": {
       "command": "npx",
-      "args": ["-y", "@knyazevai/mcp-catalog"]
+      "args": ["-y", "knyazevai-mcp-catalog"]
     }
   }
 }
@@ -32,7 +32,7 @@ npx -y @knyazevai/mcp-catalog
   "mcpServers": {
     "mcp-catalog": {
       "command": "npx",
-      "args": ["-y", "@knyazevai/mcp-catalog"]
+      "args": ["-y", "knyazevai-mcp-catalog"]
     }
   }
 }
@@ -44,7 +44,7 @@ npx -y @knyazevai/mcp-catalog
   "mcpServers": {
     "mcp-catalog": {
       "command": "npx",
-      "args": ["-y", "@knyazevai/mcp-catalog"]
+      "args": ["-y", "knyazevai-mcp-catalog"]
     }
   }
 }
@@ -56,7 +56,7 @@ npx -y @knyazevai/mcp-catalog
   "servers": {
     "mcp-catalog": {
       "command": "npx",
-      "args": ["-y", "@knyazevai/mcp-catalog"]
+      "args": ["-y", "knyazevai-mcp-catalog"]
     }
   }
 }
